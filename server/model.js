@@ -64,6 +64,9 @@ Product.init(
         description: {
             type: DataTypes.STRING,
         },
+        quantity: {
+            type: DataTypes.INTEGER,
+        },
         isSoldOut: {
             type: DataTypes.BOOLEAN,
         },

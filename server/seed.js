@@ -5,7 +5,7 @@ const db = await connectToDB('postgresql:///saguaro')
 
 const productData = [
     {
-        productName: 'Atom Custers',
+        productName: 'Atom Clusters',
         imgUrl: 'https://www.fdssaz.com/uploads/1/2/4/7/124706229/s920435953827472879_p38_i1_w3024.jpeg?width=640',
         description: 'These are gummy nerds that have been freeze-dried to perfection! So packed with flavor, light and crunchy! And soooo fun to eat, you’ll love them!',
         quantity: 20,
@@ -54,8 +54,22 @@ const productData = [
     }
 ]
 
+const userData = [
+    {
+        firstName: 'Luca',
+        lastName: 'Pukas',
+        email: 'luca@test.com',
+    },
+    {
+        firstName: 'Carmela',
+        lastName: 'Meow',
+        email: 'carmela@test.com',
+    }
+]
+
 await db.sync({ force: true }).then(async () => {
     await Product.bulkCreate(productData)
+    await User.bulkCreate(userData)
     console.log('db reset and seeded')
 })
 

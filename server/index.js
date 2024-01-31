@@ -21,6 +21,8 @@ app.use(session({
 const { allProducts, updateProduct } = productCtrl;
 
 //set up end points here
+
+
 app.get('/api/products', allProducts);
 app.put('/api/products/:id', updateProduct);
 

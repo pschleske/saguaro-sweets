@@ -1,4 +1,5 @@
 import { DataTypes, Model } from "sequelize";
+import connectToDB from "./db.js";
 import url from "url";
 import util from "util";
 
@@ -62,7 +63,7 @@ Product.init(
             type: DataTypes.STRING,
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(5000),
         },
         quantity: {
             type: DataTypes.INTEGER,

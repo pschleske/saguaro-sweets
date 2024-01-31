@@ -3,6 +3,8 @@ import morgan from "morgan";
 import ViteExpress from "vite-express";
 import session from "express-session";
 
+import productCtrl from './controller/productCtrl.js';
+
 const app = express();
 const PORT = 4545;
 
@@ -16,6 +18,11 @@ app.use(session({
     resave: false
 }))
 
+const { allProducts, updateProduct } = productCtrl;
+
 //set up end points here
+app.get('/api/products', allProducts);
+app.put('/api/edit-pet', updateProduct);
+
 
 ViteExpress.listen(app, PORT, () => console.log(`Listening on ${PORT}, go to http://localhost:4545`))

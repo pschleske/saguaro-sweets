@@ -15,24 +15,19 @@ const productFunctions = {
 
     updateProduct: async (req, res) => {
         try {
+            console.log('hit updateProduct!')
             const { id } = req.params;
             const { quantity, isSoldOut } = req.body;
 
-            const [updatedCount] = await Product.update({
-                quantity,
-                isSoldOut
-            },
-                {
-                    where: { pedId: id }
-                }
-            );
-
-            if (updatedCount === 0) {
-                res.status(404).json({ success: false, message: 'Product not found' })
-            } else {
-                const updatedProduct = await Product.findByPk(id);
-                res.status(200).json({ success: true, updatedProduct })
+            const product = await Product.findByPk(id);
+            if (!product) {
+                return res.status(404).json({ success: false, message: 'Product not found' });
             }
+            product.quantity = quantity;
+            product.isSoldOut = isSoldOut;
+            await product.save();
+
+            res.status(200).json({ success: true, product })
         } catch (err) {
             console.error('Error updating product:', err)
             res.status(500).json({ success: false, message: 'Internal server error' })

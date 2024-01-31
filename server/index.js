@@ -22,7 +22,7 @@ const { allProducts, updateProduct } = productCtrl;
 
 //set up end points here
 app.get('/api/products', allProducts);
-app.put('/api/edit-pet', updateProduct);
+app.put('/api/products/:id', updateProduct);
 
 
 ViteExpress.listen(app, PORT, () => console.log(`Listening on ${PORT}, go to http://localhost:4545`))

@@ -26,5 +26,9 @@ const { register, login, logout } = authCtrl;
 app.get('/api/products', allProducts);
 app.put('/api/products/:id', updateProduct);
 
+app.post('/api/register', register);
+app.post('/api/login', login);
+app.delete('/api/logout', logout);
+
 
 ViteExpress.listen(app, PORT, () => console.log(`Listening on ${PORT}, go to http://localhost:4545`))

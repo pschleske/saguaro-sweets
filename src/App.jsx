@@ -1,11 +1,12 @@
-// import { useState } from 'react'
-// import './App.css'
+import { Header } from "./elements/Header.jsx"
+import { AllProducts } from "./components/AllProducts.jsx"
 
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline"> Saguaro Sweets</h1>
+      <Header />
+      <AllProducts />
     </>
   )
 }

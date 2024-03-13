@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-import React from 'react'
+import { Product } from "./Product.jsx";
 
 export const AllProducts = () => {
     const [productData, setProductData] = useState([]);
@@ -22,12 +20,18 @@ export const AllProducts = () => {
 
     return (
         <div>
-            <h1>products here</h1>
-            {productData.map((product) => {
-                <div key={product.productId} className="w-full sm:w-1/2 md:w-1/3 flex items-center justify-center">
-                    <div className="text-black"> {product.productName} </div>
+            {productData.map((product) => (
+                <div key={product.productId} className="border-solid border-black">
+                    <h4 className="text-lg text-black"> {product.productName} </h4>
+                    <Product
+                        initialProductData={{
+                            name: product.productName,
+                            imgUrl: product.imgUrl,
+                            description: product.description,
+                        }}
+                    />
                 </div>
-            })}
+            ))}
         </div>
-    )
+    );
 }

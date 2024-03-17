@@ -1,9 +1,7 @@
-import { useState } from "react"
 
-export const Name = ({ initialProductData }) => {
-    const [name, setName] = useState(initialProductData.name)
+export const Name = ({ value }) => {
 
     return (
-        <div> {name} </div>
+        <div> {value} </div>
     )
 }

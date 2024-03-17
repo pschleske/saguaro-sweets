@@ -22,7 +22,6 @@ export const AllProducts = () => {
         <div>
             {productData.map((product) => (
                 <div key={product.productId} className="border-solid border-black">
-                    <h4 className="text-lg text-black"> {product.productName} </h4>
                     <Product
                         initialProductData={{
                             name: product.productName,
